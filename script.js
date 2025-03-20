@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("JavaScript loaded!");
     
-    // Check if script is running
+    // Debugging alert (remove later)
     alert("JavaScript is working!");
 
     createTable();
