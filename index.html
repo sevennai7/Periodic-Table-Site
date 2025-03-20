@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Periodic Table</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="settings-button" onclick="toggleSettings()">⚙️</div>
+
+    <div id="settings-menu">
+        <h2>Settings</h2>
+        <label>Theme:</label>
+        <select id="theme-select" onchange="changeTheme()">
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+        </select>
+        
+        <label>Table Layout:</label>
+        <select id="layout-select" onchange="changeLayout()">
+            <option value="atomic">Atomic Number Order</option>
+            <option value="alphabetical">Alphabetical Order</option>
+            <option value="categorized">Categorized Order</option>
+        </select>
+
+        <label>Extras:</label>
+        <input type="checkbox" id="chaos-mode" onchange="toggleChaos()"> Chaos Mode
+
+        <button onclick="toggleSettings()">Close</button>
+    </div>
+
+    <h1>Interactive Periodic Table</h1>
+    
+    <div id="periodic-table"></div> <!-- Periodic Table Grid -->
+
+    <button onclick="getRandomElement()">Random Element</button>
+
+    <div id="element-info" class="hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
