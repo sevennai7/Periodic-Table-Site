@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("JavaScript loaded!");
+    
+    // Check if script is running
+    alert("JavaScript is working!");
+
+    createTable();
+    applySavedSettings();
+});
+
+// Elements list
 const elements = [
     { number: 1, symbol: "H", name: "Hydrogen", fact: "The most abundant element in the universe!" },
     { number: 2, symbol: "He", name: "Helium", fact: "Makes your voice sound funny!" },
@@ -11,9 +22,10 @@ const elements = [
     { number: 10, symbol: "Ne", name: "Neon", fact: "Glows in neon signs!" }
 ];
 
+// Create periodic table grid
 function createTable() {
     const tableDiv = document.getElementById("periodic-table");
-    tableDiv.innerHTML = ""; // Clear before adding elements
+    tableDiv.innerHTML = ""; 
 
     elements.forEach(element => {
         let el = document.createElement("div");
@@ -22,35 +34,41 @@ function createTable() {
         el.onclick = () => showElementInfo(element);
         tableDiv.appendChild(el);
     });
+
+    console.log("Table created!");
 }
 
+// Show element info
 function showElementInfo(element) {
     const infoDiv = document.getElementById("element-info");
     infoDiv.innerHTML = `<strong>${element.name} (${element.symbol})</strong><br>Atomic Number: ${element.number}<br>${element.fact}`;
     infoDiv.classList.remove("hidden");
 }
 
+// Random Element
 function getRandomElement() {
     let randomElement = elements[Math.floor(Math.random() * elements.length)];
     showElementInfo(randomElement);
 }
 
+// Settings Menu Toggle
 function toggleSettings() {
     let settingsMenu = document.getElementById("settings-menu");
     settingsMenu.style.display = (settingsMenu.style.display === "block") ? "none" : "block";
 }
 
+// Change Theme
 function changeTheme() {
     let theme = document.getElementById("theme-select").value;
     document.body.classList.toggle("dark-mode", theme === "dark");
     localStorage.setItem("theme", theme);
 }
 
-function changeLayout() {
-    let layout = document.getElementById("layout-select").value;
-    console.log(`Table layout changed to: ${layout}`); // Future layout logic here
+// Apply Saved Settings
+function applySavedSettings() {
+    let savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        document.body.classList.toggle("dark-mode", savedTheme === "dark");
+        document.getElementById("theme-select").value = savedTheme;
+    }
 }
-
-function toggleChaos() {
-    let chaos = document.getElementById("chaos-mode").checked;
-    console
